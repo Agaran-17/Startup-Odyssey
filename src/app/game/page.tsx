@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { scenarios } from "@/data/scenerios";
 import { initialGameState } from "@/lib/initialstate";
@@ -10,6 +10,20 @@ export default function GamePage() {
   
 const [report, setReport] = useState("");
 const [loading, setLoading] = useState(false);
+useEffect(() => {
+  const savedGame = localStorage.getItem("startup-odyssey-save");
+
+  if (savedGame) {
+    setGameState(JSON.parse(savedGame));
+  }
+}, []);
+
+useEffect(() => {
+  localStorage.setItem(
+    "startup-odyssey-save",
+    JSON.stringify(gameState)
+  );
+}, [gameState]);
 
   const currentScenario = scenarios.find(
     (scenario) => scenario.day === gameState.day
@@ -160,9 +174,11 @@ const [loading, setLoading] = useState(false);
 
       <button
         className="bg-blue-600 p-3 rounded hover:bg-blue-700 transition"
-        onClick={() =>
-          setGameState({ ...initialGameState })
-        }
+        onClick={() => {
+  localStorage.removeItem("startup-odyssey-save");
+  setGameState({ ...initialGameState });
+  setReport("");
+}}
       >
         
         Restart Game

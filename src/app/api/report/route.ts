@@ -5,23 +5,56 @@ export async function POST(req: Request) {
     const data = await req.json();
 
     const prompt = `
-You are an expert startup mentor.
+You are an experienced startup mentor, investor, and business strategist.
 
-Analyze this startup journey:
+Analyze the startup's final performance based on these metrics:
 
-Cash: ${data.cash}
-Reputation: ${data.reputation}
+Cash: ₹${data.cash}
+Reputation: ${data.reputation}/100
 Customers: ${data.customers}
 Employees: ${data.employees}
-Product Quality: ${data.productQuality}
+Product Quality: ${data.productQuality}/100
 
-Give:
-1. Founder Score /100
-2. Strengths
-3. Weaknesses
-4. Final Verdict
+Generate a professional founder evaluation using the following format:
 
-Keep the response under 150 words.
+🏆 Founder Score:
+(Give a score out of 100)
+
+👤 Founder Personality:
+(Choose one that best fits:
+Visionary Founder,
+Data-Driven CEO,
+Customer-Centric Founder,
+Aggressive Risk Taker,
+Balanced Entrepreneur,
+Growth Strategist)
+
+💰 Financial Health:
+(Excellent / Good / Average / Poor)
+
+📈 Business Growth:
+(Excellent / Good / Moderate / Weak)
+
+🤝 Leadership:
+Evaluate leadership based on employee count and reputation.
+
+⭐ Top Strengths:
+Give exactly 3 concise bullet points.
+
+⚠ Areas to Improve:
+Give exactly 3 concise bullet points.
+
+🎯 Recommendation:
+Give one practical recommendation for the founder's next step.
+
+🚀 Final Verdict:
+Write a short motivational conclusion (2–3 sentences).
+
+Rules:
+- Keep the total response under 220 words.
+- Be constructive and realistic.
+- Do not use Markdown tables.
+- Use emojis exactly as shown above.
 `;
 
     const completion =

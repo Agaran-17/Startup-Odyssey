@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 
 import { scenarios } from "@/data/scenerios";
 import { initialGameState } from "@/lib/initialstate";
-
+import ProgressBar from "@/components/ProgressBar";
+import AdvisorCard from "@/components/AdvisorCard";
+import StatsGrid from "@/components/StatsGrid";
+import ScenarioCard from "@/components/ScenarioCard";
+import AIReport from "@/components/AIReport";
 export default function GamePage() {
   const [gameState, setGameState] = useState(initialGameState);
   
@@ -203,57 +207,17 @@ useEffect(() => {
       <h1 className="text-3xl font-bold mb-4">
         Day {gameState.day}
       </h1>
-      <div className="bg-purple-900 border border-purple-500 p-4 rounded mb-6">
-  <h3 className="font-bold mb-2">
-    🤖 Startup Advisor
-  </h3>
+      
+    <ProgressBar day={gameState.day} />
 
-  <p>
-    {getAdvisorMessage()}
-  </p>
-</div>
-
-      <div className="grid grid-cols-2 gap-4 mb-8">
-        <div className="bg-gray-900 p-4 rounded">
-          💰 Cash: ₹{gameState.cash}
-        </div>
-
-        <div className="bg-gray-900 p-4 rounded">
-          ⭐ Reputation: {gameState.reputation}
-        </div>
-
-        <div className="bg-gray-900 p-4 rounded">
-          👥 Customers: {gameState.customers}
-        </div>
-
-        <div className="bg-gray-900 p-4 rounded">
-          👨‍💻 Employees: {gameState.employees}
-        </div>
-
-        <div className="bg-gray-900 p-4 rounded">
-          📦 Product Quality: {gameState.productQuality}
-        </div>
-      </div>
-
-      <h2 className="text-xl mb-4">
-        {currentScenario.title}
-      </h2>
-
-      <p className="mb-8">
-        {currentScenario.question}
-      </p>
-
-      <div className="flex flex-col gap-4">
-        {currentScenario.choices.map((choice, index) => (
-          <button
-            key={index}
-            onClick={() => handleChoice(choice)}
-            className="bg-blue-600 p-3 rounded hover:bg-blue-700 transition"
-          >
-            {choice.text}
-          </button>
-        ))}
-      </div>
+<AdvisorCard
+  message={getAdvisorMessage()}
+/>
+<StatsGrid gameState={gameState} />
+<ScenarioCard
+  scenario={currentScenario}
+  onChoice={handleChoice}
+/>
     </main>
   );
 }

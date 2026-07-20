@@ -1,6 +1,7 @@
 import HeroBadge from "./HeroBadge";
 import HeroHeading from "./HeroHeading";
 import HeroDescription from "./HeroDescription";
+import HeroButton from "./HeroButton";
 
 export default function Hero() {
   return (
@@ -12,6 +13,8 @@ export default function Hero() {
         <HeroHeading />
 
         <HeroDescription />
+
+        <HeroButton />
 
       </div>
     </section>

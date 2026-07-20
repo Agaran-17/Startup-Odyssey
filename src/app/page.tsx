@@ -1,21 +1,14 @@
-import Link from "next/link";
+import GridBackground from "@/components/common/GridBackground";
+import Navbar from "@/components/layout/navbar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
-      <h1 className="text-5xl font-bold mb-4">
-        Startup Odyssey
-      </h1>
+    <main className="min-h-screen relative overflow-hidden">
 
-      <p className="text-gray-400 mb-8">
-        Every Decision Shapes Your Startup
-      </p>
+      <GridBackground />
 
-      <Link href="/intro">
-  <button className="bg-blue-600 px-6 py-3 rounded">
-    Start Building
-  </button>
-</Link>
+      <Navbar />
+
     </main>
   );
 }

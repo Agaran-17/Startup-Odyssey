@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <header className="absolute top-0 left-0 w-full z-50">
-      <nav className="max-w-7xl mx-auto flex items-center justify-between px-8 py-6">
+      <nav className="flex items-center justify-between px-12 pt-8">
 
         {/* Logo */}
 
@@ -19,14 +19,12 @@ export default function Navbar() {
 
         {/* Guest Button */}
 
-        <Link href="/intro">
-
-          <button className="rounded-xl border border-purple-500/40 bg-purple-500/10 px-5 py-2.5 text-white transition hover:bg-purple-600/30">
-            Play as Guest →
-          </button>
-
-        </Link>
-
+       <Link
+        href="/intro"
+        className="rounded-xl border border-purple-500/40 bg-purple-500/10 px-5 py-2.5 text-white transition hover:bg-purple-500/20"
+>
+        Play as Guest →
+       </Link>
       </nav>
     </header>
   );

@@ -27,7 +27,7 @@ export default function HeroButton() {
           "
         >
           <span className="relative z-10">
-            Play as Guest →
+           Begin Your Startup →
           </span>
 
           <span
